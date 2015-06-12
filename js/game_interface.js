@@ -1,16 +1,22 @@
-window.GameInterface = {
+var GameInterface = Backbone.View.extend({
 
   initialize: function(){
-    GameInterface.inputBox = $("#inputBox").first();
-    GameInterface.textOutput = $("#textOutput").first();
-    _.extend( GameInterface, Backbone.Events );
+    var self = this;
+    this.inputBox = $("#inputBox").first();
+    this.textOutput = $("#textOutput").first();
 
 
-    GameInterface.inputBox.keyup( function(e) {
+    this.inputBox.keyup( function(e) {
       if( e.keyCode == 13 ) {
-        GameInterface.getInput();
+        self.getInput();
       }
     });
+
+    this.model = new Game();
+
+    this.listenTo( this.model, "game_output", this.outputText );
+    
+    this.model.beginPlay();
 
   },
 
@@ -19,17 +25,18 @@ window.GameInterface = {
   },
 
   outputText: function ( outputString ) {
-    var domDestination = GameInterface.textOutput;
-    domDestination.append( GameInterface.formatOutput( outputString ) );
+    console.log("output text");
+    var domDestination = this.textOutput;
+    domDestination.append( this.formatOutput( outputString ) );
     while ( domDestination[0].scrollHeight > domDestination[0].clientHeight ){
       domDestination.find(":first-child").remove();
     }
   },
 
   getInput: function(){
-    var textEntered = GameInterface.inputBox.val();
-    GameInterface.inputBox.val("");
-    Game.handleInput( textEntered );
+    var textEntered = this.inputBox.val();
+    this.inputBox.val("");
+    this.model.handleInput( textEntered );
   },
 
-};
+});
