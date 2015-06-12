@@ -4,6 +4,7 @@ $(document).ready( function(){
   var inputBox = $("#inpputBox").first();
   var textOutput = $("#textOutput").first();
   
+  textOutput.append( formatOutput("Welcome to Muh survival!") );
   textOutput.append( formatOutput("cool!") );
   textOutput.append( formatOutput("cool!") );
   textOutput.append( formatOutput("cool!") );
