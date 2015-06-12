@@ -5,17 +5,32 @@ var GameInterface = Backbone.View.extend({
     this.inputBox = $("#inputBox").first();
     this.textOutput = $("#textOutput").first();
 
-
-    this.inputBox.keyup( function(e) {
-      if( e.keyCode == 13 ) {
-        self.getInput();
-      }
+    //put game construction here
+    $.ajax({
+      beforeSend: function(xhr){
+        if (xhr.overrideMimeType)
+          {
+            xhr.overrideMimeType("application/json");
+          }
+      },
+      dataType: "json",
+      url     : "./game_content.json",
+      success : self.constructGame,
+      context : self
     });
 
-    this.model = new Game();
+  },
+
+  events: {
+    "enter #inputBox" : this.getInput
+  },
+
+  constructGame: function( gameDataJSON ) {
+
+    this.model = new Game( gameDataJSON );
 
     this.listenTo( this.model, "game_output", this.outputText );
-    
+
     this.model.beginPlay();
 
   },
@@ -25,7 +40,6 @@ var GameInterface = Backbone.View.extend({
   },
 
   outputText: function ( outputString ) {
-    console.log("output text");
     var domDestination = this.textOutput;
     domDestination.append( this.formatOutput( outputString ) );
     while ( domDestination[0].scrollHeight > domDestination[0].clientHeight ){
