@@ -2,6 +2,8 @@ var GameInterface = Backbone.View.extend({
 
   initialize: function(){
     var self = this;
+    this.el = $( ".game_window" )[0];
+    this.$el = $( this.el );
     this.inputBox = $("#inputBox").first();
     this.textOutput = $("#textOutput").first();
 
@@ -19,10 +21,12 @@ var GameInterface = Backbone.View.extend({
       context : self
     });
 
+    this.delegateEvents();
+
   },
 
   events: {
-    "enter #inputBox" : this.getInput
+    "keyup #inputBox" : "keyPressEventHandler"
   },
 
   constructGame: function( gameDataJSON ) {
@@ -44,6 +48,13 @@ var GameInterface = Backbone.View.extend({
     domDestination.append( this.formatOutput( outputString ) );
     while ( domDestination[0].scrollHeight > domDestination[0].clientHeight ){
       domDestination.find(":first-child").remove();
+    }
+  },
+
+  keyPressEventHandler : function( e ){
+    //enter key
+    if( e.keyCode == 13 ) {
+      this.getInput();
     }
   },
 
