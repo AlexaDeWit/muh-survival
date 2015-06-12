@@ -4,25 +4,17 @@ $(document).ready( function(){
   var inputBox = $("#inpputBox").first();
   var textOutput = $("#textOutput").first();
   
-  textOutput.append( formatOutput("Welcome to Muh survival!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
-  textOutput.append( formatOutput("cool!") );
+  outputText( "Welcome to Muh Survival!", textOutput );
+
 });
 
 function formatOutput(outputString) {
   return "<li>" + outputString + "</li>";
 };
 
+function outputText( outputString, domDestination ) {
+  domDestination.append( formatOutput( outputString ) );
+  while ( domDestination[0].scrollHeight > domDestination[0].clientHeight ){
+    domDestination.find(":first-child").remove();
+  }
+};
