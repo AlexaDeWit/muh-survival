@@ -14,7 +14,7 @@ var GameInterface = Backbone.View.extend({
           }
       },
       dataType: "json",
-      url     : "game_content.json",
+      url     : "./game_content.json",
       success : self.constructGame,
       context : self
     });
