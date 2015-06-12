@@ -1,13 +1,13 @@
 {
-  "game": {
+  "game_info": {
     "name": "Muh Survival",
-    "welcome_message": "Welcome to Muh Survival!",
+    "welcome_message": "Welcome to Muh Survival!"
+  },
 
-    "rooms": [
-      {
-        "id": "starting_room",
-        "entry_text": "Hi, I'm a room."
-      }
-    ]
-  }
+  "rooms": [
+    {
+      "id": "starting_room",
+      "entry_text": "Hi, I'm a room."
+    }
+  ]
 }
