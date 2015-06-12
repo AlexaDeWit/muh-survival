@@ -1,6 +1,13 @@
 {
   "game": {
     "name": "Muh Survival",
-    "welcome_message": "Welcome to Muh Survival!"
+    "welcome_message": "Welcome to Muh Survival!",
+
+    "rooms": [
+      "room": {
+        "id": "starting_room",
+        "entry_text": "Hi, I'm a room."
+      }
+    ]
   }
 }
