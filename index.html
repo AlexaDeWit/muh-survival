@@ -1,33 +1,42 @@
 <!--
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-   
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-   MA 02110-1301, USA.
-   
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+MA 02110-1301, USA.
+
 -->
 
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- LIBS -->
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="./lib/lodash.min.js"></script>
     <script src="./lib/backbone-min.js"></script>
-    <script src="./js/room.js"></script>
-    <script src="./js/rooms.js"></script>
-    <script src="./js/game.js"></script>
-    <script src="./js/game_interface.js"></script>
+    <!-- MODELS -->
+    <script src="./js/models/room.js"></script>
+    <script src="./js/models/game.js"></script>
+    <script src="./js/models/player.js"></script>
+    <script src="./js/models/item.js"></script>
+    <!-- COLLECTIONS -->
+    <script src="./js/collections/rooms.js"></script>
+    <script src="./js/collections/inventory_items.js"></script>
+    <!-- VIEWS -->
+    <script src="./js/views/game_interface.js"></script>
+    <!-- INIT -->
     <script src="./js/init.js"></script>
+    <!-- END SCRIPTS, BEGIN StyleS -->
     <link type="text/css" rel="stylesheet" href="./css/normalize.css" />
     <link type="text/css" rel="stylesheet" href="./css/styles.css" />
 
