@@ -1,3 +1,3 @@
 It looks like this so far:
 
-![](https://github.com/github/AlexaDeWit/blob/master/screenshot.png)
+![](https://github.com/AlexaDeWit/muh-survival/blob/master/screenshot.png)
