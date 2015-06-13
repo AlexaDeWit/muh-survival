@@ -4,6 +4,13 @@
     "welcome_message": "Welcome to Muh Survival!"
   },
 
+  "starting_items" : [
+    {
+      "id" : "torch",
+      "count": 2
+    }
+  ],
+
   "rooms": [
     {
       "id": "starting_room",
