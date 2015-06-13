@@ -50,7 +50,15 @@
           "type" : "room_change",
           "verbs" : ["go", "run", "walk"],
           "nouns" : ["south"],
-          "dest_room_id" : "room2"
+          "dest_room_id" : "room2",
+          "requirements" : [
+            {
+              "type": "item",
+              "item_id": "torch",
+              "item_count": "1",
+              "unmet_message": "It is too dark!"
+            }
+          ]
         }
       ]
     }

@@ -26,6 +26,9 @@ var Game = Backbone.Model.extend({
   scaffold: function( gameData ){
     this.set( gameData.game_info );
     this.set( "rooms", new Rooms( gameData.rooms ) );
+    this.set( "player", new Player({
+      inventory_items : new InventoryItems( gameData.starting_items )
+    }) );
   },
 
   handleInput: function( inputWords ) {
@@ -49,7 +52,6 @@ var Game = Backbone.Model.extend({
       });
     }
     if( unmetRequirements && unmetRequirements.length > 0 ) {
-      console.log( unmetRequirements );
       self.trigger( "game_output", _.first( unmetRequirements ).unmetMessage );
     } else {
       if( action.type === "room_change" ){
@@ -58,8 +60,13 @@ var Game = Backbone.Model.extend({
     }
   },
 
+  //returns true if requirement is met.
   checkActionRequirement : function( requirement ){
-    return false;
+    if( requirement.type === "item" ) {
+      return this.get("player").meetsItemRequirement( requirement );
+    } else {
+      return true;
+    }
   },
 
   enterRoom : function( room ){
