@@ -1,3 +1,3 @@
-I am a readme for Muh Survival. Eventually someone will explain this(simple) project.
+It looks like this so far:
 
-Poorly written too!
+![](https://github.com/github/AlexaDeWit/blob/master/screenshot.png)
