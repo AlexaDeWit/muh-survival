@@ -7,32 +7,46 @@
   "rooms": [
     {
       "id": "starting_room",
-      "entry_text": "Hi, I'm a room.",
+      "entry_text": "You see a doorway in the east side of the room.",
       "possible_actions" :[
         { 
           "type" : "room_change",
-          "verb" : "go",
-          "noun" : "east",
+          "verbs" : ["go", "run", "walk"],
+          "nouns" : ["east"],
           "dest_room_id" : "room2"
         }
       ]
     },
     {
       "id": "room2",
-      "entry_text": "You have entered the second room!",
+      "entry_text": "You see a doorway in the north and the west side of the room.",
       "possible_actions" :[
         { 
           "type" : "room_change",
-          "verb" : "go",
-          "noun" : "west",
-          "dest_room_id" : "starting_room",
-          "requirements" : [
-            {
-              "unmetMessage": "You are lost and cannot find your way back."
-            }
-          ]
+          "verbs" : ["go", "run", "walk"],
+          "nouns" : ["west"],
+          "dest_room_id" : "starting_room"
+        },
+        { 
+          "type" : "room_change",
+          "verbs" : ["go", "run", "walk"],
+          "nouns" : ["north"],
+          "dest_room_id" : "room3"
+        }
+      ]
+    },
+    {
+      "id": "room3",
+      "entry_text": "You see a doorway in the south side of the room.",
+      "possible_actions" :[
+        { 
+          "type" : "room_change",
+          "verbs" : ["go", "run", "walk"],
+          "nouns" : ["south"],
+          "dest_room_id" : "room2"
         }
       ]
     }
+    
   ]
 }
