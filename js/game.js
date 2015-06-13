@@ -28,8 +28,8 @@ var Game = Backbone.Model.extend({
     this.set( "rooms", new Rooms( gameData.rooms ) );
   },
 
-  handleInput: function( inputText ) {
-    console.log( inputText );
+  handleInput: function( inputWords ) {
+    console.log( inputWords )
   },
 
   enterRoom : function( room ){

@@ -1,5 +1,10 @@
 var GameInterface = Backbone.View.extend({
 
+  discardedInputWords : [
+    "to",
+    "the"
+  ],
+
   initialize: function(){
     var self = this;
     this.el = $( ".game_window" )[0];
@@ -22,7 +27,6 @@ var GameInterface = Backbone.View.extend({
     });
 
     this.delegateEvents();
-
   },
 
   events: {
@@ -59,9 +63,31 @@ var GameInterface = Backbone.View.extend({
   },
 
   getInput: function(){
-    var textEntered = this.inputBox.val();
+    var textEntered,
+        cleanedWords,
+        lowerCaseWords;
+    textEntered = this.inputBox.val();
+    //An array representing the user input.
+    lowerCaseWords = textEntered.toLowerCase();
+    cleanedWords = this.cleanInput( lowerCaseWords );
     this.inputBox.val("");
-    this.model.handleInput( textEntered );
+    this.model.handleInput( cleanedWords );
   },
+
+  cleanInput : function( text ){
+    var strippedText,
+        splitText,
+        self;
+    self = this;
+        
+    //Strip string to alphanumeric + whitespace
+    strippedText = text.replace(/[^a-zA-Z\d\s:]/g, '' );
+    //split string into a word array
+    splitText = strippedText.split(/\s+/);
+    //return a list of words, removing those explicitly discarded
+    return _.reject( splitText, function( word ){
+      return _.includes( self.discardedInputWords, word );
+    });
+  }
 
 });
