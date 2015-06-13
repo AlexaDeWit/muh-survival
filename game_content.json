@@ -25,7 +25,12 @@
           "type" : "room_change",
           "verb" : "go",
           "noun" : "west",
-          "dest_room_id" : "starting_room"
+          "dest_room_id" : "starting_room",
+          "requirements" : [
+            {
+              "unmetMessage": "You are lost and cannot find your way back."
+            }
+          ]
         }
       ]
     }

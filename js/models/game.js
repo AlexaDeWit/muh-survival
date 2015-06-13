@@ -39,9 +39,27 @@ var Game = Backbone.Model.extend({
   },
 
   attemptAction : function( action ){
-    if( action.type === "room_change" ){
-      this.enterRoom( this.get("rooms").get( action.dest_room_id ));
+    var self,
+        unmetRequirements;
+    self = this;
+
+    if( action.hasOwnProperty("requirements") ) {
+      unmetRequirements = _.reject( action.requirements, function( requirement ){
+        return self.checkActionRequirement( requirement );
+      });
     }
+    if( unmetRequirements && unmetRequirements.length > 0 ) {
+      console.log( unmetRequirements );
+      self.trigger( "game_output", _.first( unmetRequirements ).unmetMessage );
+    } else {
+      if( action.type === "room_change" ){
+        this.enterRoom( this.get("rooms").get( action.dest_room_id ));
+      }
+    }
+  },
+
+  checkActionRequirement : function( requirement ){
+    return false;
   },
 
   enterRoom : function( room ){
@@ -50,6 +68,6 @@ var Game = Backbone.Model.extend({
   },
 
   loadSaveData : function(){
-      this.enterRoom( this.get("rooms").get( this.saveData.currentRoom ) );
+    this.enterRoom( this.get("rooms").get( this.saveData.currentRoom ) );
   }
 });
