@@ -66,12 +66,19 @@ var GameInterface = Backbone.View.extend({
     var textEntered,
         cleanedWords,
         lowerCaseWords;
+
     textEntered = this.inputBox.val();
-    //An array representing the user input.
+
+    //work in lower case for simple comparisons
     lowerCaseWords = textEntered.toLowerCase();
+    //An array representing the user input.
     cleanedWords = this.cleanInput( lowerCaseWords );
     this.inputBox.val("");
-    this.model.handleInput( cleanedWords );
+
+    //Only send input to the game if it exists.
+    if( cleanedWords.length > 0 && cleanedWords[0] !== "" ){
+      this.model.handleInput( cleanedWords );
+    }
   },
 
   cleanInput : function( text ){
