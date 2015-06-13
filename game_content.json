@@ -7,7 +7,33 @@
   "rooms": [
     {
       "id": "starting_room",
-      "entry_text": "Hi, I'm a room."
+      "entry_text": "Hi, I'm a room.",
+      "connected_rooms": [
+        { 
+          "id": "room2",
+          "entry_methods" : [
+            { 
+              "verbs":  ["go"],
+              "nouns":  ["east"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "room2",
+      "entry_text": "You have entered the second room!.",
+      "connected_rooms": [
+        {
+          "id": "starting_room",
+          "entry_methods":[
+            {
+              "verbs":   ["go"],
+              "nouns":   ["west"]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

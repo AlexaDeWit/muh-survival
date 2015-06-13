@@ -29,11 +29,10 @@ var Game = Backbone.Model.extend({
   },
 
   handleInput: function( inputWords ) {
-    console.log( inputWords )
+    //check for connected room commands.
   },
 
   enterRoom : function( room ){
-    console.log(room);
     this.trigger("game_output", room.get("entry_text") );
     this.currentRoom = room;
   },
