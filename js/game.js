@@ -29,7 +29,19 @@ var Game = Backbone.Model.extend({
   },
 
   handleInput: function( inputWords ) {
-    //check for connected room commands.
+    var foundAction;
+    foundAction = this.currentRoom.findAction( inputWords );
+    if( foundAction ){
+      this.attemptAction( foundAction );
+    } else {
+      this.trigger( "game_output", "I don't understand that action." );
+    }
+  },
+
+  attemptAction : function( action ){
+    if( action.type === "room_change" ){
+      this.enterRoom( this.get("rooms").get( action.dest_room_id ));
+    }
   },
 
   enterRoom : function( room ){
