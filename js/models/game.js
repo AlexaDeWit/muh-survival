@@ -52,7 +52,7 @@ var Game = Backbone.Model.extend({
       });
     }
     if( unmetRequirements && unmetRequirements.length > 0 ) {
-      self.trigger( "game_output", _.first( unmetRequirements ).unmetMessage );
+      self.trigger( "game_output", _.first( unmetRequirements ).unmet_message );
     } else {
       if( action.type === "room_change" ){
         this.enterRoom( this.get("rooms").get( action.dest_room_id ));
